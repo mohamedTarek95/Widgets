@@ -7,12 +7,12 @@
 
 import UIKit
 
-extension UIWindow {
-    public func swapRootViewController(newController: UIViewController, animated: Bool, completion: (() -> Void)? = nil) {
-        self.rootViewController?.dismiss(animated: false, completion: nil)
-        self.rootViewController = newController
+public extension UIWindow {
+    func swapRootViewController(newController: UIViewController, animated: Bool, completion: (() -> Void)? = nil) {
+        rootViewController?.dismiss(animated: false, completion: nil)
+        rootViewController = newController
         completion?()
-        
+
         if animated {
             UIView.transition(with: self, duration: 0.3, options: .transitionCrossDissolve, animations: nil, completion: nil)
         }

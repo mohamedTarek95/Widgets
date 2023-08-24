@@ -16,11 +16,9 @@ protocol HomeScenePresentationLogic {
     func presentWidgets(_ response: HomeScene.FetchWidgets.Response)
 }
 
-protocol HomeSceneDataStore {
-}
+protocol HomeSceneDataStore {}
 
-protocol HomeSceneRoutingLogic {
-}
+protocol HomeSceneRoutingLogic {}
 
 protocol HomeSceneBusinessLogic {
     func fetchWidgets()

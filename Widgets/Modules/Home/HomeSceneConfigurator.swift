@@ -19,7 +19,7 @@ enum HomeSceneConfigurator {
 
         viewController.router = router
         viewController.interactor = interactor
-        
+
         let nav = UINavigationController(rootViewController: viewController)
 
         return nav

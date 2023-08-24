@@ -10,7 +10,7 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    
+
     static var keyWindow: UIWindow? {
         get {
             return (UIApplication.shared.delegate as? AppDelegate)?.window
@@ -19,8 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             (UIApplication.shared.delegate as? AppDelegate)?.window = newValue
         }
     }
-    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
+    func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let window = AppDelegate.keyWindow ?? UIWindow(frame: UIScreen.main.bounds)
         AppDelegate.keyWindow = window
         let controller = HomeSceneConfigurator.configure()

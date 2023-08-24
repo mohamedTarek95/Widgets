@@ -10,9 +10,10 @@ import UIKit
 
 final class HomeSceneRouter: HomeSceneDataPassing {
     // MARK: - Stored properties
+
     weak var viewController: HomeSceneViewController?
     let dataStore: HomeSceneDataStore
-    
+
     init(viewController: HomeSceneViewController, dataStore: HomeSceneDataStore) {
         self.viewController = viewController
         self.dataStore = dataStore
@@ -20,6 +21,5 @@ final class HomeSceneRouter: HomeSceneDataPassing {
 }
 
 // MARK: - HomeSceneRoutingLogic Methods
-extension HomeSceneRouter: HomeSceneRoutingLogic {
 
-}
+extension HomeSceneRouter: HomeSceneRoutingLogic {}

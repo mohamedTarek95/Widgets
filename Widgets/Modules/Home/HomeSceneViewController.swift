@@ -12,20 +12,23 @@ import UIKit
 
 class HomeSceneViewController: UIViewController {
     // MARK: - IBOutlets
-    @IBOutlet private weak var collectionView: UICollectionView!
-    
+
+    @IBOutlet private var collectionView: UICollectionView!
+
     // MARK: - Stored properties
+
     var interactor: HomeSceneBusinessLogic!
     var router: HomeSceneRoutingLogic!
-    
+
     private var state: HomeScene.State = .idle
-    
+
     @objc func randomizeCells() {
         interactor.fetchWidgets()
     }
 }
 
 // MARK: - View lifecycle
+
 extension HomeSceneViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +38,7 @@ extension HomeSceneViewController {
 }
 
 // MARK: - HomeDisplayLogic Methods
+
 extension HomeSceneViewController: HomeSceneDisplayLogic {
     func displayWidgets(_ viewModel: HomeScene.FetchWidgets.ViewModel) {
         state = .loaded(viewModel: viewModel)
@@ -44,21 +48,22 @@ extension HomeSceneViewController: HomeSceneDisplayLogic {
 }
 
 // MARK: - UICollectionViewDataSource
+
 extension HomeSceneViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
         switch state {
         case .idle:
             return 0
-        case .loaded(let viewModel):
+        case let .loaded(viewModel):
             return viewModel.items.count
         }
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch state {
         case .idle:
             fatalError("Data incosistency in HomeSceneViewController")
-        case .loaded(let viewModel):
+        case let .loaded(viewModel):
             let cell: WidgetCollectionViewCell = collectionView.dequeueReusableCell(indexPath: indexPath)
             cell.setup(with: viewModel.items[indexPath.item])
             return cell
@@ -67,6 +72,7 @@ extension HomeSceneViewController: UICollectionViewDataSource {
 }
 
 // MARK: - Helpers
+
 private extension HomeSceneViewController {
     private func configureViews() {
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]

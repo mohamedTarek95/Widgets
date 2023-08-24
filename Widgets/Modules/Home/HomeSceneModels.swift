@@ -16,6 +16,7 @@ enum HomeScene {
         case idle
         case loaded(viewModel: HomeScene.FetchWidgets.ViewModel)
     }
+
     enum FetchWidgets {}
 }
 
@@ -31,7 +32,7 @@ extension HomeScene.FetchWidgets {
     struct GroupedWidgets {
         let widgets: [Widgets.Fetch.Widget]
         let groupStyle: Style
-        
+
         enum Style {
             case fullSize, fiftyFifty, quadruples, mixed
         }
