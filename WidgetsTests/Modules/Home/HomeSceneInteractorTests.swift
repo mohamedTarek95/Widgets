@@ -26,7 +26,7 @@ class HomeSceneInteractorTests: XCTestCase {
 
     // MARK: - Tests
 
-    // MARK: - showFeesPlaceholder Tests
+    // MARK: - fetchWidgets Tests
 
     func testFetchWidgets_CallsPresentWidgets() throws {
         // When

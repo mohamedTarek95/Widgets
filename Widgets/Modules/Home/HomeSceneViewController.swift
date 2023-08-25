@@ -13,7 +13,7 @@ import UIKit
 class HomeSceneViewController: UIViewController {
     // MARK: - IBOutlets
 
-    @IBOutlet private var collectionView: UICollectionView!
+    @IBOutlet private weak var collectionView: UICollectionView!
 
     // MARK: - Stored properties
 

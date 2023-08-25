@@ -12,9 +12,9 @@ import UIKit
 
 final class HomeScenePresenter {
     // MARK: - Stored properties
-    
+
     weak var displayView: HomeSceneDisplayLogic?
-    
+
     init(displayView: HomeSceneDisplayLogic) {
         self.displayView = displayView
     }
@@ -29,10 +29,10 @@ extension HomeScenePresenter: HomeScenePresentationLogic {
     }
 }
 
-private extension HomeScenePresenter {
+extension HomeScenePresenter {
     func consturctStyles(from response: HomeScene.FetchWidgets.Response) -> HomeScene.FetchWidgets.ViewModel {
         let groupedWidgets = constructGroupedWidgets(from: response)
-        
+
         let layoutItems: [NSCollectionLayoutItem] = groupedWidgets.compactMap {
             switch $0.groupStyle {
             case .fullSize:
@@ -45,7 +45,7 @@ private extension HomeScenePresenter {
                 return constructMixedLayoutItem()
             }
         }
-        
+
         let mainGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                                    heightDimension: .estimated(1000))
         let mainGroup = NSCollectionLayoutGroup.vertical(layoutSize: mainGroupSize,
@@ -53,19 +53,19 @@ private extension HomeScenePresenter {
         mainGroup.interItemSpacing = .fixed(8)
         let section = NSCollectionLayoutSection(group: mainGroup)
         section.contentInsets = .init(top: 0, leading: 16, bottom: 0, trailing: 16)
-        
+
         let items: [WidgetCollectionViewCell.ViewModel] = groupedWidgets
             .flatMap { $0.widgets }
             .map { .init(content: $0.style == .mini ? $0.title : $0.content) }
-        
+
         return .init(layout: section,
                      items: items)
     }
-    
+
     func constructGroupedWidgets(from response: HomeScene.FetchWidgets.Response) -> [HomeScene.FetchWidgets.GroupedWidgets] {
         let sortedResponse = response.sorted(by: { $0.style <= $1.style })
         let chunkedResponse = Dictionary(grouping: sortedResponse, by: { $0.style })
-        
+
         var allGroups: [HomeScene.FetchWidgets.GroupedWidgets] = []
         if let largeResponse = chunkedResponse[.large]?.chunked(into: 1) {
             largeResponse.forEach {
@@ -74,7 +74,7 @@ private extension HomeScenePresenter {
                 allGroups.append(fullSizeGroup)
             }
         }
-        
+
         let squareTupled = chunkedResponse[.square]?.perfectlyChunked(into: 2)
         if let chunkedSquareItems = squareTupled?.perfectChunked {
             chunkedSquareItems.forEach {
@@ -83,7 +83,7 @@ private extension HomeScenePresenter {
                 allGroups.append(fiftyFiftyGroup)
             }
         }
-        
+
         let miniTupled = chunkedResponse[.mini]?.perfectlyChunked(into: 4)
         if let chunkedMiniItems = miniTupled?.perfectChunked {
             chunkedMiniItems.forEach {
@@ -92,21 +92,22 @@ private extension HomeScenePresenter {
                 allGroups.append(quadruplesGroup)
             }
         }
-        
+
         allGroups.shuffle() // To generate some randomness in the groups
-        
+
         let remainderSquareItems = squareTupled?.remainder ?? []
         let remainderMiniItems = miniTupled?.remainder ?? []
         constructOddSectionFrom(remainderSquareItems: remainderSquareItems,
                                 remainderMiniItems: remainderMiniItems,
                                 allGroups: &allGroups)
-        
+
         return allGroups
     }
-    
+
     func constructOddSectionFrom(remainderSquareItems: [Widgets.Fetch.Widget],
                                  remainderMiniItems: [Widgets.Fetch.Widget],
-                                 allGroups: inout [HomeScene.FetchWidgets.GroupedWidgets]) {
+                                 allGroups: inout [HomeScene.FetchWidgets.GroupedWidgets])
+    {
         switch (remainderSquareItems.isEmpty, remainderMiniItems.isEmpty) {
         case (true, false):
             let mixedGroup = HomeScene.FetchWidgets.GroupedWidgets(widgets: remainderMiniItems,
@@ -126,6 +127,7 @@ private extension HomeScenePresenter {
 }
 
 // MARK: - NSCollectionLayout helpers
+
 private extension HomeScenePresenter {
     func constructFullSizeLayoutItem() -> NSCollectionLayoutItem {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
@@ -137,7 +139,7 @@ private extension HomeScenePresenter {
                                                          subitems: [item])
         return fullGroup
     }
-    
+
     func constructFiftyFiftyLayoutItem() -> NSCollectionLayoutItem {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5),
                                               heightDimension: .fractionalHeight(1))
@@ -150,7 +152,7 @@ private extension HomeScenePresenter {
         group.interItemSpacing = .fixed(8)
         return group
     }
-    
+
     func constructQuadruplesLayoutItem() -> NSCollectionLayoutItem {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.25),
                                               heightDimension: .fractionalHeight(1))
@@ -163,13 +165,13 @@ private extension HomeScenePresenter {
         group.interItemSpacing = .fixed(8)
         return group
     }
-    
+
     func constructMixedLayoutItem() -> NSCollectionLayoutItem? {
         let squareItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5),
                                                     heightDimension: .fractionalHeight(1))
         let squareItem = NSCollectionLayoutItem(layoutSize: squareItemSize)
         squareItem.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 8)
-        
+
         let miniItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5),
                                                   heightDimension: .fractionalHeight(1))
         let miniItem = NSCollectionLayoutItem(layoutSize: miniItemSize)
@@ -179,19 +181,19 @@ private extension HomeScenePresenter {
                                                         repeatingSubitem: miniItem,
                                                         count: 2)
         hGroup.interItemSpacing = .fixed(8)
-        
+
         let vGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5),
                                                 heightDimension: .fractionalHeight(1))
         let vGroup = NSCollectionLayoutGroup.vertical(layoutSize: vGroupSize,
                                                       repeatingSubitem: hGroup,
                                                       count: 2)
         vGroup.interItemSpacing = .fixed(8)
-        
+
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                                heightDimension: .fractionalWidth(0.5))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
                                                        subitems: [squareItem, vGroup])
-        
+
         return group
     }
 }

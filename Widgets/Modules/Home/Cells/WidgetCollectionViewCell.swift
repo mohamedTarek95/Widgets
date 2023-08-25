@@ -9,7 +9,7 @@ import UIKit
 
 class WidgetCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var contentLabel: UILabel!
-    
+
     func setup(with viewModel: ViewModel) {
         contentLabel.text = viewModel.content
     }

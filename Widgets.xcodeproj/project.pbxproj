@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		769FD6692A96365D0055951A /* Array+Chunked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769FD6682A96365D0055951A /* Array+Chunked.swift */; };
 		769FD6AA2A97C6600055951A /* HomeSceneInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769FD6A92A97C6600055951A /* HomeSceneInteractorTests.swift */; };
+		769FD6AC2A993FD80055951A /* HomeScenePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769FD6AB2A993FD70055951A /* HomeScenePresenterTests.swift */; };
+		769FD6AE2A99427E0055951A /* Widget+Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769FD6AD2A99427E0055951A /* Widget+Stub.swift */; };
+		769FD6B12A9947100055951A /* HomeSceneViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769FD6B02A9947100055951A /* HomeSceneViewControllerTests.swift */; };
 		76F831232A94CFB400B8E752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F831222A94CFB400B8E752 /* AppDelegate.swift */; };
 		76F8312C2A94CFB500B8E752 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76F8312B2A94CFB500B8E752 /* Assets.xcassets */; };
 		76F8312F2A94CFB500B8E752 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76F8312D2A94CFB500B8E752 /* LaunchScreen.storyboard */; };
@@ -42,6 +45,10 @@
 		769FD6682A96365D0055951A /* Array+Chunked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Chunked.swift"; sourceTree = "<group>"; };
 		769FD69D2A97C5F30055951A /* WidgetsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WidgetsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		769FD6A92A97C6600055951A /* HomeSceneInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSceneInteractorTests.swift; sourceTree = "<group>"; };
+		769FD6AB2A993FD70055951A /* HomeScenePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScenePresenterTests.swift; sourceTree = "<group>"; };
+		769FD6AD2A99427E0055951A /* Widget+Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Widget+Stub.swift"; sourceTree = "<group>"; };
+		769FD6AF2A9945770055951A /* Widgets.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Widgets.xctestplan; sourceTree = "<group>"; };
+		769FD6B02A9947100055951A /* HomeSceneViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSceneViewControllerTests.swift; sourceTree = "<group>"; };
 		76F8311F2A94CFB400B8E752 /* Widgets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Widgets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76F831222A94CFB400B8E752 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76F8312B2A94CFB500B8E752 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -117,6 +124,7 @@
 		769FD6A72A97C6000055951A /* Model Stubs */ = {
 			isa = PBXGroup;
 			children = (
+				769FD6AD2A99427E0055951A /* Widget+Stub.swift */,
 			);
 			path = "Model Stubs";
 			sourceTree = "<group>";
@@ -125,6 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				769FD6A92A97C6600055951A /* HomeSceneInteractorTests.swift */,
+				769FD6AB2A993FD70055951A /* HomeScenePresenterTests.swift */,
+				769FD6B02A9947100055951A /* HomeSceneViewControllerTests.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -132,6 +142,7 @@
 		76F831162A94CFB300B8E752 = {
 			isa = PBXGroup;
 			children = (
+				769FD6AF2A9945770055951A /* Widgets.xctestplan */,
 				76F831212A94CFB400B8E752 /* Widgets */,
 				76F8314A2A94D1AC00B8E752 /* Domain */,
 				769FD6662A9636460055951A /* Core */,
@@ -352,6 +363,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				769FD6AE2A99427E0055951A /* Widget+Stub.swift in Sources */,
+				769FD6AC2A993FD80055951A /* HomeScenePresenterTests.swift in Sources */,
+				769FD6B12A9947100055951A /* HomeSceneViewControllerTests.swift in Sources */,
 				769FD6AA2A97C6600055951A /* HomeSceneInteractorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
