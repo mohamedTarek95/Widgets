@@ -5,14 +5,14 @@ Widgets is a demo app the demonstrates the power of `UICollectionViewComposition
 ---
 
 # Index
-- [Setup](#setup-⚙️)
-- [Getting Started](#getting-started-🏁)
+- [Setup](#setup-%EF%B8%8F)
+- [Getting Started](#getting-started-)
     - [Architecture](#architecture)
     - [Logic](#logic)
-- [Notes](#notes-⚠️)
-- [TODOs](#todos-✔️)
-- [Demo](#demo-🤩️)
-- [Built using](#built-using-🔧️)
+- [Notes](#notes-%EF%B8%8F)
+- [TODOs](#todos-%EF%B8%8F)
+- [Demo](#demo-%EF%B8%8F)
+- [Built using](#built-using-%EF%B8%8F)
 
 ---
 
