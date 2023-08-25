@@ -79,7 +79,10 @@ Mixed compositions consists of 1 square widget and up to 4 mini widgets. This co
  ---
  
  ## Demo 🤩️
- 
+
+ *Wait for it to load*
+
+ ![Demo](https://i.ibb.co/NCJyBLy/my-gif.gif)
  
  ---
   
