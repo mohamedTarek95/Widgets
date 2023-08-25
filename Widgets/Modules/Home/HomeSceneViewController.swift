@@ -78,6 +78,7 @@ private extension HomeSceneViewController {
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.register(WidgetCollectionViewCell.self)
         collectionView.dataSource = self
+        navigationItem.title = "Widgets" // Should be placed in a constants file that maps it to its localized version
         navigationItem.rightBarButtonItem = .init(barButtonSystemItem: .refresh, target: self, action: #selector(randomizeCells))
     }
 }

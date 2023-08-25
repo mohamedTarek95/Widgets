@@ -99,14 +99,20 @@ private extension HomeScenePresenter {
 
         let remainderSquareItems = squareTupled?.remainder ?? []
         let remainderMiniItems = miniTupled?.remainder ?? []
-        let mixedItems: [Widgets.Fetch.Widget] = remainderSquareItems + remainderMiniItems
-        if !remainderSquareItems.isEmpty {
+
+        switch (remainderSquareItems.isEmpty, remainderMiniItems.isEmpty) {
+        case (true, false):
+            let mixedGroup = HomeScene.FetchWidgets.GroupedWidgets(widgets: remainderMiniItems,
+                                                                   groupStyle: .quadruples)
+            allGroups.append(mixedGroup)
+        case (false, true) where allGroups.contains(where: { $0.groupStyle == .quadruples }):
+            let quadrupleIndex = allGroups.lastIndex(where: { $0.groupStyle == .quadruples })!
+            allGroups[quadrupleIndex] = HomeScene.FetchWidgets.GroupedWidgets(widgets: remainderSquareItems + allGroups[quadrupleIndex].widgets,
+                                                                              groupStyle: .mixed)
+        default:
+            let mixedItems: [Widgets.Fetch.Widget] = remainderSquareItems + remainderMiniItems
             let mixedGroup = HomeScene.FetchWidgets.GroupedWidgets(widgets: mixedItems,
                                                                    groupStyle: .mixed)
-            allGroups.append(mixedGroup)
-        } else {
-            let mixedGroup = HomeScene.FetchWidgets.GroupedWidgets(widgets: mixedItems,
-                                                                   groupStyle: .quadruples)
             allGroups.append(mixedGroup)
         }
 

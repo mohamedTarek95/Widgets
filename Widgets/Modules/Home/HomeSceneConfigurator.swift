@@ -21,6 +21,7 @@ enum HomeSceneConfigurator {
         viewController.interactor = interactor
 
         let nav = UINavigationController(rootViewController: viewController)
+        nav.navigationBar.prefersLargeTitles = true
 
         return nav
     }
