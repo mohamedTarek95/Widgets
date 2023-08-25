@@ -32,7 +32,7 @@ extension HomeSceneInteractor: HomeSceneBusinessLogic {
 private extension HomeSceneInteractor {
     func generateRandomWidget() -> Widgets.Fetch.Widget {
         let title = "App"
-        let content = randomString(length: Int.random(in: 300 ... 600)).capitalized
+        let content = randomString(length: Int.random(in: 50 ... 400)).capitalized
         return .init(style: .allCases.randomElement()!,
                      title: title,
                      content: content)
